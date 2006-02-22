@@ -1,0 +1,11 @@
+--- dwi-0.6.1/db_drivers/dui-libpg.c.orig	2004-07-24 05:14:59.000000000 +0200
++++ dwi-0.6.1/db_drivers/dui-libpg.c	2006-02-21 12:13:31.000000000 +0100
+@@ -36,7 +36,7 @@
+ 
+ #include <string.h>
+ #include <time.h>
+-#include <postgresql/libpq-fe.h>
++#include <libpq-fe.h>
+ 
+ #include "dui-libpg.h"
+ #include "dui-initdb-p.h"
