@@ -1,0 +1,157 @@
+--- dwi-0.6.1/dwi-gtk/Makefile.am.orig	2004-07-29 15:49:51.000000000 +0200
++++ dwi-0.6.1/dwi-gtk/Makefile.am	2006-02-21 12:17:20.000000000 +0100
+@@ -16,7 +16,7 @@
+ 	-I ../app \
+ 	-I ../src \
+ 	-I ../db_drivers \
+- 	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++ 	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ libdwi_gtk_la_SOURCES = \
+ 	duifield-gtk.c   \
+@@ -42,7 +42,7 @@
+ 
+ libdwi_gtk_la_LDFLAGS = \
+ 	-module \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ libdwi_gtk_la_LIBADD = 
+ 
+--- dwi-0.6.1/src/Makefile.am.orig	2004-07-29 15:49:53.000000000 +0200
++++ dwi-0.6.1/src/Makefile.am	2006-02-21 12:24:41.000000000 +0100
+@@ -19,7 +19,7 @@
+ AM_CFLAGS = \
+ 	-I ../db_drivers \
+ 	-I ../dwi-qof \
+- 	`pkg-config --cflags xml2 glib-2.0 gobject-2.0` 
++ 	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0` 
+ 
+ libdwi_la_SOURCES = \
+ 	action.c    \
+@@ -66,7 +66,7 @@
+ 
+ libdwi_la_LDFLAGS = \
+ 	-module \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0` 
+ 
+ libdwi_la_LIBADD = 
+ 
+--- dwi-0.6.1/app/Makefile.am.orig	2004-07-29 15:49:51.000000000 +0200
++++ dwi-0.6.1/app/Makefile.am	2006-02-21 12:28:56.000000000 +0100
+@@ -23,7 +23,7 @@
+ 	-I ../dwi \
+ 	-I ../dwi-qof \
+ 	-I ../src \
+- 	`pkg-config --cflags xml2 glib-2.0 gobject-2.0` 
++ 	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0` 
+ 
+ libdwi_parse_la_SOURCES = \
+ 	readfile.c
+@@ -35,7 +35,7 @@
+ 
+ libdwi_parse_la_LDFLAGS = \
+ 	-module \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0` 
+ 
+ libdwi_parse_la_LIBADD = 
+ 
+@@ -53,12 +53,12 @@
+ 	-I ../dwi-gtk \
+ 	${QOF_CFLAGS} \
+ 	${ODBC_CFLAGS} \
+-	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ dwi_run_LDFLAGS = \
+ 	${QOF_LIBS} \
+ 	${ODBC_LIBS} \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ dwi_run_LDADD = \
+ 	libdwi-parse.la \
+--- dwi-0.6.1/examples/app-integration/Makefile.am.orig	2004-07-24 02:37:29.000000000 +0200
++++ dwi-0.6.1/examples/app-integration/Makefile.am	2006-02-21 12:36:36.000000000 +0100
+@@ -27,11 +27,11 @@
+ 	-I../../src \
+ 	-I../../dwi-gtk \
+ 	$(ODBC_CFLAGS) \
+-	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ button_action_LDFLAGS = \
+ 	$(ODBC_LIBS) \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ 
+ button_action_LDADD = \
+@@ -52,11 +52,11 @@
+ 	-I../../src \
+ 	-I../../dwi-gtk \
+ 	$(ODBC_CFLAGS) \
+-	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ view_entry_LDFLAGS = \
+ 	$(ODBC_LIBS) \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
+ 
+ view_entry_LDADD = \
+  	../../app/libdwi-parse.la \
+--- dwi-0.6.1/examples/basic-gobj/Makefile.am.orig	2004-07-21 16:52:50.000000000 +0200
++++ dwi-0.6.1/examples/basic-gobj/Makefile.am	2006-02-21 12:36:51.000000000 +0100
+@@ -29,10 +29,10 @@
+ 	-I../../app \
+ 	-I../../src \
+ 	-I../../dwi-gtk \
+-	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
++	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
+ 
+ active_object_LDFLAGS = \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
+ 
+ 
+ active_object_LDADD = \
+--- dwi-0.6.1/examples/bike-calc/Makefile.am.orig	2004-07-24 02:37:29.000000000 +0200
++++ dwi-0.6.1/examples/bike-calc/Makefile.am	2006-02-21 12:37:34.000000000 +0100
+@@ -44,10 +44,10 @@
+ 	-I../../app \
+ 	-I../../src \
+ 	-I../../dwi-gtk \
+-	`pkg-config --cflags xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
++	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
+ 
+ biker_LDFLAGS = \
+-	`pkg-config --libs xml2 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
++	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0`
+ 
+ 
+ biker_LDADD = \
+--- dwi-0.6.1/examples/basic-qof/Makefile.am.orig	2004-07-22 05:33:49.000000000 +0200
++++ dwi-0.6.1/examples/basic-qof/Makefile.am	2006-02-21 12:37:12.000000000 +0100
+@@ -33,7 +33,7 @@
+ 	`pkg-config --cflags glib-2.0 qof-0`
+ 
+ my_app_LDFLAGS = \
+-	`pkg-config --libs xml2 glib-2.0 qof-0`
++	`pkg-config --libs libxml-2.0 glib-2.0 qof-0`
+ 
+ 
+ my_app_LDADD = \
+--- dwi-0.6.1/examples/qof-proto/Makefile.am.orig	2004-07-21 16:58:13.000000000 +0200
++++ dwi-0.6.1/examples/qof-proto/Makefile.am	2006-02-21 12:37:44.000000000 +0100
+@@ -37,7 +37,7 @@
+ 	`pkg-config --cflags glib-2.0 qof-0`
+ 
+ my_app_LDFLAGS = \
+-	`pkg-config --libs xml2 glib-2.0 qof-0`
++	`pkg-config --libs libxml-2.0 glib-2.0 qof-0`
+ 
+ 
+ my_app_LDADD = \
