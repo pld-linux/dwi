@@ -1,0 +1,53 @@
+--- dwi-0.6.1/configure.in.orig	2004-07-29 15:49:36.000000000 +0200
++++ dwi-0.6.1/configure.in	2006-02-22 11:40:41.000000000 +0100
+@@ -66,7 +66,7 @@
+    AC_DEFINE(HAVE_QOF,,We Have Found QOF)
+ fi
+ 
+-AM_CONDITIONAL(BUILD_QOF, [test x$HAVE_QOF = x])
++AM_CONDITIONAL(BUILD_QOF, [test x$HAVE_QOF != x])
+ 
+ dnl **************************************************************
+ dnl If ODBC is found on the build system, then use it.
+--- dwi-0.6.1/examples/app-integration/Makefile.am.orig	2006-02-22 12:28:48.000000000 +0100
++++ dwi-0.6.1/examples/app-integration/Makefile.am	2006-02-22 12:34:36.000000000 +0100
+@@ -38,7 +38,6 @@
+  	../../app/libdwi-parse.la \
+ 	../../src/libdwi.la \
+ 	../../dwi-gtk/libdwi-gtk.la \
+-	../../dwi-qof/libdwi-qof.la \
+ 	../../db_drivers/libdwi-dbdrivers.la
+ 
+ # ----------------------------------------------
+@@ -62,7 +61,6 @@
+  	../../app/libdwi-parse.la \
+ 	../../src/libdwi.la \
+ 	../../dwi-gtk/libdwi-gtk.la \
+-	../../dwi-qof/libdwi-qof.la \
+ 	../../db_drivers/libdwi-dbdrivers.la
+ 
+ # ----------------------------------------------
+--- dwi-0.6.1/examples/basic-qof/Makefile.am.orig	2006-02-22 12:28:48.000000000 +0100
++++ dwi-0.6.1/examples/basic-qof/Makefile.am	2006-02-22 12:34:58.000000000 +0100
+@@ -9,7 +9,9 @@
+ # Created by Linas Vepstas March 2002
+ #
+ 
++if BUILD_QOF
+ noinst_PROGRAMS = my-app
++endif
+ 
+ EXTRA_DIST =                   \
+ 	.cvsignore                  \
+--- dwi-0.6.1/examples/qof-proto/Makefile.am.orig	2006-02-22 12:28:48.000000000 +0100
++++ dwi-0.6.1/examples/qof-proto/Makefile.am	2006-02-22 12:35:24.000000000 +0100
+@@ -9,7 +9,9 @@
+ # Created by Linas Vepstas March 2002
+ #
+ 
++if BUILD_QOF
+ noinst_PROGRAMS = my-app
++endif
+ 
+ EXTRA_DIST =                   \
+ 	.cvsignore                  \
