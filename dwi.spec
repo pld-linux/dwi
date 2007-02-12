@@ -1,5 +1,5 @@
 Summary:	Data With Interaction
-Summary(pl):	Data With Interaction - biblioteka do pracy z danymi
+Summary(pl.UTF-8):   Data With Interaction - biblioteka do pracy z danymi
 Name:		dwi
 Version:	0.6.1
 Release:	1
@@ -33,14 +33,14 @@ DWI is a fairly simple environment for quickly creating data-driven
 applications, that is, graphical applications that manipulate and show
 info from a database.
 
-%description -l pl
-DWI to w miarÍ proste ∂rodowisko do szybkiego tworzenia aplikacji
-pracuj±cych z danymi, czyli graficznych aplikacji obrabiaj±cych i
-wy∂wietlaj±cych informacje z bazy danych.
+%description -l pl.UTF-8
+DWI to w miarƒô proste ≈õrodowisko do szybkiego tworzenia aplikacji
+pracujƒÖcych z danymi, czyli graficznych aplikacji obrabiajƒÖcych i
+wy≈õwietlajƒÖcych informacje z bazy danych.
 
 %package devel
 Summary:	Header files for DWI library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki DWI
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki DWI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.0.0
@@ -49,19 +49,19 @@ Requires:	libxml2-devel >= 2.0.0
 %description devel
 Header files for DWI library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki DWI.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki DWI.
 
 %package static
 Summary:	Static DWI library
-Summary(pl):	Statyczna biblioteka DWI
+Summary(pl.UTF-8):   Statyczna biblioteka DWI
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static DWI library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka DWI.
 
 %prep
