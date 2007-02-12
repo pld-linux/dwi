@@ -1,5 +1,5 @@
 Summary:	Data With Interaction
-Summary(pl.UTF-8):   Data With Interaction - biblioteka do pracy z danymi
+Summary(pl.UTF-8):	Data With Interaction - biblioteka do pracy z danymi
 Name:		dwi
 Version:	0.6.1
 Release:	1
@@ -40,7 +40,7 @@ wyświetlających informacje z bazy danych.
 
 %package devel
 Summary:	Header files for DWI library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki DWI
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki DWI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.0.0
@@ -54,7 +54,7 @@ Pliki nagłówkowe biblioteki DWI.
 
 %package static
 Summary:	Static DWI library
-Summary(pl.UTF-8):   Statyczna biblioteka DWI
+Summary(pl.UTF-8):	Statyczna biblioteka DWI
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
