@@ -1,23 +1,22 @@
 Summary:	Data With Interaction
 Summary(pl.UTF-8):	Data With Interaction - biblioteka do pracy z danymi
 Name:		dwi
-Version:	0.6.1
-Release:	1
+Version:	0.6.2
+Release:	0.1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/dwi/%{name}-%{version}.tar.gz
-# Source0-md5:	30fa12e13238b80151538513ff189bdc
+# Source0-md5:	23ca8f91c771a0f7264801a66d3adaec
 Patch0:		%{name}-libpq.patch
-Patch1:		%{name}-libxml2.patch
-Patch2:		%{name}-qof.patch
-Patch3:		%{name}-link.patch
+Patch1:		%{name}-qof.patch
+Patch2:		%{name}-link.patch
 URL:		http://dwi.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.0
-BuildRequires:	gtk+2-devel >= 2.0
+BuildRequires:	gtk+2-devel >= 1:2.0
 BuildRequires:	libdbi-devel
-BuildRequires:	libglade2-devel >= 2.0
+BuildRequires:	libglade2-devel >= 1:2.0
 BuildRequires:	libgnomeui-devel >= 2.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0.0
@@ -68,8 +67,7 @@ Statyczna biblioteka DWI.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch2 -p1 -b .orig
 
 %build
 %{__libtoolize}
