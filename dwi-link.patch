@@ -49,15 +49,24 @@
  
  #-------------------------------------
 --- dwi-0.6.2/dwi-gtk/Makefile.am.orig	2007-06-13 19:48:28.000000000 +0200
-+++ dwi-0.6.2/dwi-gtk/Makefile.am	2007-09-08 14:34:41.030928127 +0200
-@@ -41,7 +41,6 @@ noinst_HEADERS = \
++++ dwi-0.6.2/dwi-gtk/Makefile.am	2007-09-15 02:12:23.243090038 +0200
+@@ -41,8 +41,14 @@ noinst_HEADERS = \
  
  
  libdwi_gtk_la_LDFLAGS = \
 -	-module \
  	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
  
- libdwi_gtk_la_LIBADD = 
+-libdwi_gtk_la_LIBADD = 
++libdwi_gtk_la_LIBADD = \
++	../app/libdwi-parse.la \
++	../src/libdwi.la
+ 
++../app/libdwi-parse.la:
++	$(MAKE) -C ../app libdwi-parse.la
++
++install-exec-local:
++	$(MAKE) -C ../app install-libLTLIBRARIES
 --- dwi-0.6.2/src/Makefile.am.orig	2007-06-13 19:50:17.000000000 +0200
 +++ dwi-0.6.2/src/Makefile.am	2007-09-08 14:35:16.308938506 +0200
 @@ -65,8 +65,7 @@ noinst_HEADERS = \
@@ -72,16 +81,25 @@
 +libdwi_la_LIBADD = \
 +	../db_drivers/libdwi-dbdrivers.la
 --- dwi-0.6.2/app/Makefile.am.orig	2007-06-13 20:36:44.000000000 +0200
-+++ dwi-0.6.2/app/Makefile.am	2007-09-08 14:33:46.683831062 +0200
-@@ -34,7 +34,6 @@ dwiinclude_HEADERS =   \
++++ dwi-0.6.2/app/Makefile.am	2007-09-15 00:36:18.893399519 +0200
+@@ -34,10 +34,9 @@ dwiinclude_HEADERS =   \
  	readfile.h
  
  libdwi_parse_la_LDFLAGS = \
 -	-module \
  	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0` 
  
- libdwi_parse_la_LIBADD = 
-@@ -56,13 +55,17 @@ dwi_run_CFLAGS = \
+-libdwi_parse_la_LIBADD = 
++libdwi_parse_la_LIBADD = ../src/libdwi.la
+ 
+ 
+ # ---------------------------------
+@@ -51,18 +50,15 @@ dwi_run_SOURCES = \
+ dwi_run_CFLAGS = \
+ 	-I ../src \
+ 	-I ../dwi-gtk \
+-	${QOF_CFLAGS} \
+ 	${ODBC_CFLAGS} \
  	`pkg-config --cflags libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
  
  dwi_run_LDFLAGS = \
@@ -89,17 +107,35 @@
 -	${ODBC_LIBS} \
  	`pkg-config --libs libxml-2.0 glib-2.0 gobject-2.0 gtk+-2.0 libgnomeui-2.0 libglade-2.0` 
  
-+if BUILD_QOF
-+DWIQOF = ../dwi-qof/libdwi-qof.la
-+endif
-+
  dwi_run_LDADD = \
  	libdwi-parse.la \
  	../src/libdwi.la \
  	../dwi-gtk/libdwi-gtk.la \
 -	../dwi-qof/libdwi-qof.la \
 -	../db_drivers/libdwi-dbdrivers.la
-+	$(DWIQOF) \
 +	../db_drivers/libdwi-dbdrivers.la \
-+	${QOF_LIBS} \
 +	${ODBC_LIBS}
+--- dwi-0.6.2/dwi-qof/Makefile.am.orig	2007-06-14 18:37:38.000000000 +0200
++++ dwi-0.6.2/dwi-qof/Makefile.am	2007-09-15 00:34:43.440137667 +0200
+@@ -34,7 +34,9 @@ dwiinclude_HEADERS = \
+ 	parse-qof.h
+ 
+ libdwi_qof_la_LDFLAGS = \
+-	-module              \
+ 	$(QOF_LIBS)          \
+ 	`pkg-config --libs glib-2.0` 
+ 
++libdwi_qof_la_LIBADD = \
++	../app/libdwi-parse.la \
++	../src/libdwi.la
+--- dwi-0.6.2/Makefile.am.orig	2007-06-14 20:03:59.000000000 +0200
++++ dwi-0.6.2/Makefile.am	2007-09-15 02:13:32.831476707 +0200
+@@ -11,7 +11,7 @@
+ 
+ # Don't build qof subdirectories if QOF not installed
+ 
+-SUBDIRS = db_drivers dwi dwi-gtk dwi-qof src glade app examples po
++SUBDIRS = db_drivers dwi src dwi-gtk dwi-qof glade app examples po
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = dwi-0.pc
