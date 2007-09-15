@@ -22,8 +22,8 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel
+BuildRequires:	qof-devel >= 0.7.2
 BuildRequires:	unixODBC-devel
-#BuildRequires: old qof-devel - forget for now
 BuildConflicts:	libiodbc-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -67,7 +67,7 @@ Statyczna biblioteka DWI.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1 -b .orig
+%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -97,10 +97,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README TODO
 %attr(755,root,root) %{_bindir}/dwi-run
 %attr(755,root,root) %{_libdir}/libdwi.so.*.*.*
-%attr(755,root,root) %{_libdir}/libdwi-parse.so.*.*.*
-#%attr(755,root,root) %{_libdir}/libdwi-qof.so.*.*.*
 %attr(755,root,root) %{_libdir}/libdwi-dbdrivers.so.*.*.*
+%attr(755,root,root) %{_libdir}/libdwi-parse.so.*.*.*
+#
 %attr(755,root,root) %{_libdir}/libdwi-gtk.so.*.*.*
+%attr(755,root,root) %{_libdir}/libdwi-qof.so.*.*.*
 # drivers
 %attr(755,root,root) %{_libdir}/libdwi-db-libdbi.so
 %attr(755,root,root) %{_libdir}/libdwi-db-libpg.so
@@ -109,22 +110,25 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdwi.so
-%attr(755,root,root) %{_libdir}/libdwi-parse.so
-#%attr(755,root,root) %{_libdir}/libdwi-qof.so
 %attr(755,root,root) %{_libdir}/libdwi-dbdrivers.so
+%attr(755,root,root) %{_libdir}/libdwi-parse.so
+#
 %attr(755,root,root) %{_libdir}/libdwi-gtk.so
+%attr(755,root,root) %{_libdir}/libdwi-qof.so
 %{_libdir}/libdwi.la
-%{_libdir}/libdwi-parse.la
-#%{_libdir}/libdwi-qof.la
 %{_libdir}/libdwi-dbdrivers.la
+%{_libdir}/libdwi-parse.la
+#
 %{_libdir}/libdwi-gtk.la
+%{_libdir}/libdwi-qof.la
 %{_includedir}/dwi
 %{_pkgconfigdir}/dwi-0.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libdwi.a
-%{_libdir}/libdwi-parse.a
-#%{_libdir}/libdwi-qof.a
 %{_libdir}/libdwi-dbdrivers.a
+%{_libdir}/libdwi-parse.a
+#
 %{_libdir}/libdwi-gtk.a
+%{_libdir}/libdwi-qof.a
